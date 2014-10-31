@@ -1,0 +1,8 @@
+{
+  "name": "commonJs-Angular",
+  "version": "0.0.1",
+  "dependencies": {
+    "angular": "~1.3.0",
+    "angular-ui-router": "~0.2.11"
+  }
+}
