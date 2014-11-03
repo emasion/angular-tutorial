@@ -34,7 +34,8 @@
     "gulp-useref": "^1.0.2",
     "gulp-minify-css": "^0.3.11",
     "gulp-imagemin": "^1.2.1",
-    "uglify-save-license": "^0.4.1"
+    "uglify-save-license": "^0.4.1",
+    "lodash": "^2.4.1"
   },
   "engines": {
     "node": ">=0.10.0"

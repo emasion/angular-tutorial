@@ -1,22 +1,12 @@
 'use strict'
 
-require('./helloWorld/helloWorld.module')
+require('./tutorial/tutorial.module')
 
-var RootController = require('./root.ctrl')
+var debugState = require('./common/run/debugState')
 
-function config($stateProvider, $urlRouterProvider) {
-
-	$urlRouterProvider.otherwise("/app");
-	$stateProvider
-		.state('app', {
-			url: "/app",
-			controller: 'RootController'
-		})
-}
-
-angular.module('tutorialApp', [
-	'templates'
+angular.module('app', [
+	'ui.router',
+	'tutorial'
 ])
-.config(config)
-.controller('RootController', RootController)
+.run(debugState)
 
