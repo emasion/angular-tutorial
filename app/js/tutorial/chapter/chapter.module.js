@@ -1,7 +1,7 @@
 'use strict'
 
+/* Chapter module */
 var ChapterController = require('./chapter.ctrl')
-
 function config($routeProvider) {
 
 	$routeProvider
@@ -13,5 +13,6 @@ function config($routeProvider) {
 }
 
 angular.module('tutorial.chapter', [])
-	.config(config)
-	.controller('ChapterController', ChapterController)
+.config(config)
+.controller('ChapterController', ChapterController)
+

@@ -1,0 +1,18 @@
+.tutorial-main-tablelist {
+    display: inline-block;
+}
+
+.tutorial-main-tablelist > li {
+    margin: 5px;
+    float: left;
+}
+
+.tutorial-main-tablelist .tutorial-main-tableItem {
+    width: 150px;
+    background-color: azure;
+    padding: 5px;
+}
+
+.tutorial-main-tablelist .tutorial-main-tableItem span {
+    color: blue;
+}

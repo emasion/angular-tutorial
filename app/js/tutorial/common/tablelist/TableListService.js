@@ -2,23 +2,25 @@
 
 // @ngInject
 module.exports = function TableListService($rootScope, $q, $timeout, $filter, $http) {
+	var self = this
 	var data = {}
-	data.tableList = [
-		{
-			'name': '[AngularJS] Chapter 1 - 데이터바인딩',
-			'url': 'tutorial.chapter01'
-		},
-		{
-			'name': '[AngularJS] Chapter 2 - 정렬과 필터',
-			'url': 'tutorial.chapter02'
-		}
-	]
+	var jsonPath = './assets/data/tablelist.json'
 
-	this.hasTableList = function() {
+	self.hasTableList = function() {
 		return !_.isEmpty(data)
 	}
 
-	this.getTableList = function() {
-		return data.tableList
+	self.getTableList = function() {
+		var d = $q.defer();
+
+		if(self.hasTableList()) {
+			d.resolve(data.tableList)
+		} else {
+			$http.get(jsonPath).success(function(jsonData) {
+				data.tableList = jsonData
+				d.resolve(jsonData)
+			})
+		}
+		return d.promise
 	}
 }

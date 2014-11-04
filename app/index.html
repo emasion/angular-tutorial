@@ -7,10 +7,14 @@
   <!-- build:js(app) assets/styles/vendor.css -->
   <!-- bower:css -->
   <!-- endbower -->
+  <link href="lib/SyntaxHighlighter/styles/shCore.css" rel="stylesheet">
+  <link href="lib/SyntaxHighlighter/styles/shThemeDefault.css" rel="stylesheet">
   <!-- endbuild -->
 
   <!-- build:js(.tmp) assets/styles/main.css -->
+  <link href="assets/styles/common.css" rel="stylesheet">
   <link href="assets/styles/main.css" rel="stylesheet">
+  <link href="assets/styles/tutorial.css" rel="stylesheet">
   <!-- endbuild -->
 
 </head>
@@ -19,6 +23,9 @@
   <!-- build:js(app) js/vendor.js -->
   <!-- bower:js -->
   <!-- endbower -->
+  <script src="lib/SyntaxHighlighter/scripts/XRegExp.js"></script>
+  <script src="lib/SyntaxHighlighter/scripts/shCore.js"></script>
+  <script src="lib/SyntaxHighlighter/scripts/shAutoloader.js"></script>
   <!-- endbuild -->
 
   <!-- build:js(.tmp) js/main.js -->
@@ -43,6 +50,7 @@
     <div ng-view>
       <h2>Home</h2>
     </div>
+
     <hr/>
 
     <pre>$location.path() = {{$location.path()}}</pre>
@@ -52,6 +60,14 @@
     <pre>$routeParams = {{$routeParams}}</pre>
 
   </div>
+
+  <script type="text/javascript">
+    SyntaxHighlighter.autoloader(
+      'js jscript javascript	./lib/SyntaxHighlighter/scripts/shBrushJScript.js',
+      'xml xhtml xslt html	./lib/SyntaxHighlighter/scripts/shBrushXml.js'
+    );
+    SyntaxHighlighter.all();
+  </script>
 
 </body>
 </html>

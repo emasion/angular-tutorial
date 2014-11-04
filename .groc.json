@@ -1,0 +1,8 @@
+{
+  "glob": [
+    "app/js/**/*.js"
+  ],
+  "except": [
+  ],
+  "out": "jsdoc"
+}
