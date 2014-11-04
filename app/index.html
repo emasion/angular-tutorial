@@ -29,7 +29,29 @@
   <script src="templates/templates.js"></script>
   <!-- endbuild -->
 
-  <div ui-view><a ui-sref="tutorial.main">123</a></div>
+  <div ng-controller="RootController">
+
+    <nav>
+      <button ng-click="$location.url('tutorial/')">HOME</button>
+      <button ng-click="$location.url('tutorial/main')">MAIN</button>
+      <button ng-click="$location.url('tutorial/chapter/1')">Ch1</button>
+      <button ng-click="$location.url('tutorial/chapter/2')">Ch2</button>
+      <button ng-click="$location.url('tutorial/chapter/3')">Ch3</button>
+    </nav>
+
+    <!-- template load -->
+    <div ng-view>
+      <h2>Home</h2>
+    </div>
+    <hr/>
+
+    <pre>$location.path() = {{$location.path()}}</pre>
+    <pre>$route.current.templateUrl = {{$route.current.templateUrl}}</pre>
+    <pre>$route.current.params = {{$route.current.params}}</pre>
+    <pre>$route.current.scope.name = {{$route.current.scope.name}}</pre>
+    <pre>$routeParams = {{$routeParams}}</pre>
+
+  </div>
 
 </body>
 </html>

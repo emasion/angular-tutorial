@@ -3,7 +3,7 @@
 var TableListService = require('./tablelist/TableListService')
 
 // @ngInject
-function config($stateProvider) {
+function config($routeProvider) {
 
 }
 

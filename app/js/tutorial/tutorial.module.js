@@ -2,34 +2,33 @@
 
 require('./common/common.module')
 require('./main/main.module')
+require('./chapter/chapter.module')
 
 var RootController = require('./root.ctrl')
 
 // @ngInject
-function config($stateProvider, $urlRouterProvider) {
-	$stateProvider
-		.state('tutorial', {
-			url: "/tutorial",
-			controller: 'RootController as rootCtrl',
-			resolve: RootController.resolve
+function config($routeProvider, $locationProvider) {
+	$routeProvider
+		.when('/', {
+			controller: 'RootController',
+			resolve: RootController.resolve,
+			redirectTo: '/tutorial/main'
 		})
 
-	$urlRouterProvider.otherwise(function ($injector, $location) {
-		return '/'
-	})
-}
-
-// @ngInject
-function run($rootScope, $state, $stateParams) {
-	$rootScope.$state = $state;
-	$rootScope.$stateParams = $stateParams;
+	$routeProvider
+		.when('/tutorial/', {
+			controller: 'RootController',
+			resolve: RootController.resolve,
+			redirectTo: '/tutorial/main'
+		})
 }
 
 angular.module('tutorial', [
+	'ngRoute',
 	'templates',
 	'tutorial.common',
-	'tutorial.main'
+	'tutorial.main',
+	'tutorial.chapter'
 ])
 .config(config)
 .controller('RootController', RootController)
-.run(run)

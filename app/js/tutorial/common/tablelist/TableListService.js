@@ -1,7 +1,7 @@
 'use strict'
 
 // @ngInject
-module.exports = function TableListService($rootScope, $state, $q, $timeout, $filter, $http) {
+module.exports = function TableListService($rootScope, $q, $timeout, $filter, $http) {
 	var data = {}
 	data.tableList = [
 		{

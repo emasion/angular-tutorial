@@ -4,32 +4,21 @@
 'use strict'
 
 // @ngInject
-module.exports = function RootController($log, $scope, $rootScope, $state, TableList) {
+module.exports = function RootController($log, $scope, $rootScope, $route, $routeParams, $location) {
 	$log.info('RootController');
+
+	// route 정보 등록
+	$scope.$route = $route;
+	$scope.$location = $location;
+	$scope.$routeParams = $routeParams;
 
 	//화면 이동 link
 	$rootScope.goURL = function (url) {
-		$state.go(url, {loadDefault: true})
+		$location.url(url)
 	}
-
-	//목차 리스트 등록
-	$scope.tableList = TableList.getTableList()
-
 }
 
 /* resolve 정의 */
 module.exports.resolve = /*@ngInject*/ {
-	TableList: function ($state, $q, $timeout, TableListService) {
-		var d = $q.defer();
-		var session = {};
 
-		if(!TableListService.hasTableList()) {
-			// 목차 정보 가져오는 부분
-		} else {
-			$timeout(function () {
-				d.resolve(TableListService)
-			})
-		}
-		return d.promise
-	}
 }
