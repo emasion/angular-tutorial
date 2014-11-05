@@ -16,3 +16,16 @@
 .tutorial-main-tablelist .tutorial-main-tableItem span {
     color: blue;
 }
+
+.chapter-title {
+    padding: 2px 8px;
+    margin: 5px;
+    border: 1px solid cadetblue;
+}
+
+.chapter-link-plunker {
+    color: rgb(87, 137, 241);
+    font-weight: bold;
+    text-decoration: underline;
+    margin: 5px;
+}

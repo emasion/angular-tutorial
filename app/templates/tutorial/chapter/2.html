@@ -1,0 +1,59 @@
+<h3>Angular Tutorial Chapter 2 - 정렬과 필터</h3>
+<br/>
+<span class="chapter-title">index.html</span>
+<script id="chapter2-1" type="syntaxhighlighter" class="brush: js;  html-script: true">
+<![CDATA[
+	<html ng-app="tutorialApp">
+	<head>
+  		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular.min.js">
+		<script src="script.js">
+	</head>
+
+	<body ng-controller="MainController">
+		<h3>Angular Tutorial Chapter 2 - 정렬과 필터</h3>
+		필터 :
+		<input type="text" ng-model="searchKeyword" />정렬 :
+		<select ng-model="searchOrderby">
+			<option value="name" selected>이름</option>
+			<option value="tel">전화번호</option>
+			<option value="address">주소</option>
+		</select>
+
+		<ul>
+			<li ng-repeat="user in users | filter:searchKeyword | orderBy:searchOrderby">
+				<p>{{user.name}}님의 전화번호는 {{user.tel}} 이고, 사는 곳은 {{user.address}} 입니다.</p>
+			</li>
+		</ul>
+	</body>
+	</html>
+]]>
+</script>
+<br/>
+<span class="chapter-title">script.js</span>
+<script id="chapter2-2" type="syntaxhighlighter" class="brush: js">
+<![CDATA[
+angular.module('tutorialApp', [])
+.controller('MainController', function($scope) {
+  $scope.users = [
+    {
+      name: 'MC. 몽',
+      tel: '010-0000-0000',
+      address: '서울시'
+    },
+    {
+      name: '홍길동',
+      tel: '010-1111-1111',
+      address: '조선'
+    },
+    {
+      name: '싸이',
+      tel: '010-2222-2222',
+      address: '지구'
+    }
+  ];
+  $scope.searchOrderby = 'address';
+})
+]]>
+</script>
+
+<a class="chapter-link-plunker" href="http://plnkr.co/edit/LkQTmZi3addYnbFilNiS?p=preview" target="_blank">Plunker</a>

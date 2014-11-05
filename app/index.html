@@ -25,7 +25,8 @@
   <!-- endbower -->
   <script src="lib/SyntaxHighlighter/scripts/XRegExp.js"></script>
   <script src="lib/SyntaxHighlighter/scripts/shCore.js"></script>
-  <script src="lib/SyntaxHighlighter/scripts/shAutoloader.js"></script>
+  <script src="lib/SyntaxHighlighter/scripts/shBrushXml.js"></script>
+  <script src="lib/SyntaxHighlighter/scripts/shBrushJScript.js"></script>
   <!-- endbuild -->
 
   <!-- build:js(.tmp) js/main.js -->
@@ -46,6 +47,8 @@
       <button ng-click="$location.url('tutorial/chapter/3')">Ch3</button>
     </nav>
 
+    <hr/>
+
     <!-- template load -->
     <div ng-view>
       <h2>Home</h2>
@@ -53,6 +56,7 @@
 
     <hr/>
 
+    <!-- location & router 표시  -->
     <pre>$location.path() = {{$location.path()}}</pre>
     <pre>$route.current.templateUrl = {{$route.current.templateUrl}}</pre>
     <pre>$route.current.params = {{$route.current.params}}</pre>
@@ -60,14 +64,6 @@
     <pre>$routeParams = {{$routeParams}}</pre>
 
   </div>
-
-  <script type="text/javascript">
-    SyntaxHighlighter.autoloader(
-      'js jscript javascript	./lib/SyntaxHighlighter/scripts/shBrushJScript.js',
-      'xml xhtml xslt html	./lib/SyntaxHighlighter/scripts/shBrushXml.js'
-    );
-    SyntaxHighlighter.all();
-  </script>
 
 </body>
 </html>

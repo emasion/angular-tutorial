@@ -1,5 +1,2 @@
-ng-modules
-==========
-
-Demonstration of using Angular with simple Gulp concatenation.
+Angular Tutorial 제작 - by emasion
 
