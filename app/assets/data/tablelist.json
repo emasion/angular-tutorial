@@ -10,5 +10,9 @@
   {
     "name": "[AngularJS] Chapter 3 - 비동기 통신(xhr)",
     "url": "tutorial/chapter/3"
+  },
+  {
+    "name": "[AngularJS] Chapter 4 - directive",
+    "url": "tutorial/chapter/4"
   }
 ]

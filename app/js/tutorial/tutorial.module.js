@@ -5,6 +5,7 @@ require('./main/main.module')
 require('./chapter/chapter.module')
 
 var RootController = require('./root.ctrl')
+var NavMainDirective = require('./common/nav/main.directive')
 
 // @ngInject
 function config($routeProvider, $locationProvider) {
@@ -32,3 +33,4 @@ angular.module('tutorial', [
 ])
 .config(config)
 .controller('RootController', RootController)
+.directive('navMainDirective', NavMainDirective)

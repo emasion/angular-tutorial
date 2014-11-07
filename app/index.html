@@ -27,6 +27,7 @@
   <script src="lib/SyntaxHighlighter/scripts/shCore.js"></script>
   <script src="lib/SyntaxHighlighter/scripts/shBrushXml.js"></script>
   <script src="lib/SyntaxHighlighter/scripts/shBrushJScript.js"></script>
+  <script src="lib/SyntaxHighlighter/scripts/shBrushCss.js"></script>
   <!-- endbuild -->
 
   <!-- build:js(.tmp) js/main.js -->
@@ -39,13 +40,8 @@
 
   <div ng-controller="RootController">
 
-    <nav>
-      <button ng-click="$location.url('tutorial/')">HOME</button>
-      <button ng-click="$location.url('tutorial/main')">MAIN</button>
-      <button ng-click="$location.url('tutorial/chapter/1')">Ch1</button>
-      <button ng-click="$location.url('tutorial/chapter/2')">Ch2</button>
-      <button ng-click="$location.url('tutorial/chapter/3')">Ch3</button>
-    </nav>
+    <!-- main nav -->
+    <nav-main-directive></nav-main-directive>
 
     <hr/>
 

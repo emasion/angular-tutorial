@@ -1,6 +1,6 @@
 'use strict'
 
-var TableListService = require('./tablelist/TableListService')
+var TableListService = require('./tablelist/tablelist.svc')
 
 // @ngInject
 function config($routeProvider) {

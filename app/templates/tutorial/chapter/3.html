@@ -5,13 +5,31 @@
 <![CDATA[
 	<html ng-app="tutorialApp">
 	<head>
+		<link rel="stylesheet" href="style.css" />
   		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular.min.js">
 		<script src="script.js">
 	</head>
 
-	<body>
+	<body ng-controller="MainController">
+		<h3>Angular Tutorial Chapter 3 - 비동기 통신(xhr)</h3>
 
-	</body>
+		<h4>Search User | Github</h4>
+		<form ng-submit="submit()">
+			<input type="text" ng-model="searchKeyword" />
+			<input type="submit" value="검색" />
+		</form>
+
+		<ul class=search-view>
+			<li ng-repeat="item in items">
+				<a href="{{item.html_url}}" target="_blank">
+				  <div class="item-box">
+					<p>{{item.login}}</p>
+					<img src="{{item.avatar_url}}" />
+				  </div>
+				</a>
+			</li>
+		</ul>
+  	</body>
 	</html>
 ]]>
 </script>
@@ -20,10 +38,58 @@
 <script id="chapter3-2" type="syntaxhighlighter" class="brush: js">
 <![CDATA[
 angular.module('tutorialApp', [])
-.controller('MainController', function($scope) {
+.controller('MainController', function($scope, $http) {
+  var apiUrl = 'https://api.github.com/search/users?q=';
 
-})
+  $scope.items = [];
+  $scope.searchKeyword = '';
+  $scope.submit = function() {
+    if ($scope.searchKeyword) {
+      // http
+      $http.get(apiUrl + $scope.searchKeyword).success(
+        function(data) {
+          $scope.items = data.items;
+        })
+      $scope.searchKeyword = '';
+    }
+  };
+});
+]]>
+</script>
+<br/>
+<span class="chapter-title">style.css</span>
+<script id="chapter3-3" type="syntaxhighlighter" class="brush: css">
+<![CDATA[
+ul.search-view {
+  list-style: none;
+  padding: 0px;
+}
+
+ul.search-view li {
+  float: left;
+  margin-right: 5px;
+}
+
+ul.search-view .item-box {
+  width: 200px; height: 200px;
+}
+
+ul.search-view .item-box > img {
+  width: 100%;
+  height: 100%;
+}
+
+ul.search-view .item-box > p{
+  position: absolute;
+  width: 200px;
+  text-align: center;
+  margin: 0px;
+  padding: 5px;
+  box-sizing: border-box;
+  background-color: #3f3f3f;
+  color: white;
+}
 ]]>
 </script>
 
-<a class="chapter-link-plunker" href="" target="_blank">Plunker</a>
+<a class="chapter-link-plunker" href="http://plnkr.co/edit/gqPY0a6pVtiXvm4qbMQ0?p=preview" target="_blank">Plunker</a>

@@ -4,7 +4,7 @@
 'use strict'
 
 // @ngInject
-module.exports = function RootController($log, $scope, $rootScope, $route, $routeParams, $location) {
+module.exports = function RootController($log, $scope, $rootScope, $route, $routeParams, $location, TableListService) {
 	$log.info('RootController');
 
 	// route 정보 등록
@@ -16,6 +16,13 @@ module.exports = function RootController($log, $scope, $rootScope, $route, $rout
 	$rootScope.goURL = function (url) {
 		$location.url(url)
 	}
+
+	//목차 정보 등록
+	TableListService.getTableList().then(function(data) {
+		$rootScope.tableList = data
+	})
+
+
 }
 
 /* resolve 정의 */
