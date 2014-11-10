@@ -14,5 +14,9 @@
   {
     "name": "[AngularJS] Chapter 4 - directive",
     "url": "tutorial/chapter/4"
+  },
+  {
+    "name": "[AngularJS] Chapter 5_1 - Service : Constant, Value, Factory",
+    "url": "tutorial/chapter/5_1"
   }
 ]

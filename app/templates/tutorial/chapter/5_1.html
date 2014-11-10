@@ -1,0 +1,100 @@
+<h3>Angular Tutorial Chapter 5_1 - Service : Constant, Value, Factory</h3>
+<br/>
+<span class="chapter-title">index.html</span>
+<script id="chapter5_1-1" type="syntaxhighlighter" class="brush: js;  html-script: true">
+<![CDATA[
+	<html ng-app="tutorialApp">
+	<head>
+  		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular.min.js">
+		<script src="script.js">
+	</head>
+
+	<body ng-controller="MainController">
+    <h4>Angular Tutorial Chapter 5_1 - Service : Constant, Value, Factory</h4>
+
+    <b>[Service]는 Singleton 객체로 사용된다.</b>
+
+    <h5>Constant</h5>
+    <div>
+      <p>constant1 : {{someConstant.constant1}}></p>
+      <p>constant2 : {{someConstant.constant2}}></p>
+    </div>
+    <br/>
+
+    <h5>Value</h5>
+    <div>
+      <p>value1 : {{someValue.value1}}></p>
+      <p>value2 : {{someValue.value2}}></p>
+      <p>value3 : {{someValue.value3}}></p>
+    </div>
+
+    <h5>Factory</h5>
+    <div>
+      <p>factory1 : {{someFactory.factory1}}</p>
+      <p>factory2 : {{someFactory.factory2}}</p>
+      <input type="text" ng-model="searchKeyword" />
+      <input type="button" value="검색" ng-click="onSearch(searchKeyword)" />
+      <ul style="list-style:none;">
+        <li style="float: left;" ng-repeat="item in searchItems" >
+          <img src="{{item.thumbnail}}" />
+        </li>
+      </ul>
+    </div>
+    <br/>
+
+  </body>
+]]>
+</script>
+<br/>
+<span class="chapter-title">script.js</span>
+<script id="chapter5_1-2" type="syntaxhighlighter" class="brush: js">
+<![CDATA[
+// module 선언
+var app = angular.module('tutorialApp', []);
+
+app.controller('MainController', function($scope, someConstant, someValue, someFactory) {
+  // scope에 등록
+  $scope.someConstant = someConstant;
+  $scope.someValue = angular.extend(someValue, {value3: 'value3은 controller에서 추가했습니다.'});
+  $scope.someFactory = someFactory;
+
+  $scope.searchItems = [];
+  $scope.onSearch = function(kwd) {
+    someFactory.callSearch(kwd).then(function(data) {
+      $scope.searchItems = data;
+    });
+  }
+});
+
+// Constant 등록
+app.constant('someConstant', {
+  constant1: 'Constant는 상수나',
+  constant2: '환경값으로 사용하기 용이합니다.'
+});
+
+// Value 등록
+app.value('someValue', {
+  value1: 'Value는 최초 한번',
+  value2: '변경이 가능합니다.'
+});
+
+// Factory 등록
+app.factory('someFactory', function($http) {
+  // daum image search api 사용
+  var daumImageSearchUrl = 'http://apis.daum.net/search/image?apikey=DAUM_SEARCH_DEMO_APIKEY&output=json&q=';
+  function getSearch(kwd) {
+    return $http.get(daumImageSearchUrl + kwd, {}).then(function(response) {
+      return response.data.channel.item;
+    });
+  }
+  return {
+    factory1: 'factory1',
+    factory2: 'factory2',
+    callSearch: getSearch
+  }
+});
+]]>
+</script>
+<br/>
+
+<a class="chapter-link-plunker" href="http://plnkr.co/edit/lAoHCT?p=preview" target="_blank">Plunker</a>
