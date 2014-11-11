@@ -1,6 +1,3 @@
-/**
- * Created by Davinci28 on 2014-10-30.
- */
 'use strict'
 
 // @ngInject
@@ -14,12 +11,12 @@ module.exports = function RootController($log, $scope, $rootScope, $route, $rout
 
 	//화면 이동 link
 	$rootScope.goURL = function (url) {
-		$location.url(url)
+		$location.url(url);
 	}
 
 	//목차 정보 등록
 	TableListService.getTableList().then(function(data) {
-		$rootScope.tableList = data
+		$rootScope.tableList = data;
 	})
 
 

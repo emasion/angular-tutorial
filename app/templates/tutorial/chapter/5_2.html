@@ -1,0 +1,81 @@
+<h3>Angular Tutorial Chapter 5_2 - Service : Factory, Service, Provider</h3>
+<br/>
+<span class="chapter-title">index.html</span>
+<script id="chapter5_2-1" type="syntaxhighlighter" class="brush: js;  html-script: true">
+<![CDATA[
+	<html ng-app="tutorialApp">
+	<head>
+  		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular.min.js">
+		<script src="script.js">
+	</head>
+
+	<body ng-controller="MainController">
+        <h4>Angular Tutorial Chapter 5_2 - Service : Factory, Service, Provider</h4>
+        <ul>
+          <li ng-repeat="service in services">
+            <p>variable: {{service.fooVariable}} <br/> function: {{service.fooFunction()}}</p>
+          </li>
+        </ul>
+    </body>
+]]>
+</script>
+<br/>
+<span class="chapter-title">script.js</span>
+<script id="chapter5_2-2" type="syntaxhighlighter" class="brush: js">
+<![CDATA[
+// module 선언
+var app = angular.module('tutorialApp', []);
+
+// factory
+app.factory('someFactory', function() {
+  return{
+    fooVariable: 'factory style - variable',
+    fooFunction: function() {
+      return 'factory style - function';
+    }
+  }
+});
+
+// service
+app.service('someService', function() {
+  this.fooVariable = 'service style - variable';
+  this.fooFunction = function() {
+    return 'service style - function';
+  };
+});
+
+// provider
+app.provider('some', function() {
+  var self = this;
+  self.foo = 'default';
+
+  self.$get = function() {
+    //var foo = this.foo;
+    return {
+      fooVariable: 'provider style - variable : ' + self.foo,
+      fooFunction: function() {
+        return 'provider style - function : ' + self.foo;
+      }
+    }
+  }
+
+  self.setFoo = function(foo) {
+    self.foo = foo;
+  }
+});
+
+// config 설정
+app.config(function(someProvider) {
+  // provider 는 config에서 원래 이름에 Provider가 붙은 명으로 찾을 수 있다.
+  someProvider.setFoo('config에서 설정함');
+});
+
+// controller
+app.controller('MainController', function($scope, someFactory, someService, some) {
+  $scope.services = [someFactory, someService, some];
+});
+]]>
+</script>
+<br/>
+
+<a class="chapter-link-plunker" href="http://plnkr.co/edit/31qdyL?p=preview" target="_blank">Plunker</a>

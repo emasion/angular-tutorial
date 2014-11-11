@@ -18,5 +18,9 @@
   {
     "name": "[AngularJS] Chapter 5_1 - Service : Constant, Value, Factory",
     "url": "tutorial/chapter/5_1"
+  },
+  {
+    "name": "[AngularJS] Chapter 5_2 - Service : Factory, Service, Provider",
+    "url": "tutorial/chapter/5_2"
   }
 ]
