@@ -1,0 +1,120 @@
+<h3>Angular Tutorial Chapter 6 - ngRoute</h3>
+<br/>
+<span class="chapter-title">index.html</span>
+<script id="chapter6-1" type="syntaxhighlighter" class="brush: js;  html-script: true">
+<![CDATA[
+	<html ng-app="tutorialApp">
+	<head>
+		<link rel="stylesheet" href="style.css" />
+  		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular.min.js">
+  		<script src="https://code.angularjs.org/1.2.20/angular-route.js">
+		<script src="script.js">
+	</head>
+
+	<body ng-controller="RootController">
+        <h3>Angular Tutorial Chapter 6 - ngRoute</h3>
+
+        <!-- navigation -->
+        <nav>
+          <button ng-click="goUrl('/')">Main</button> |
+          <button ng-click="goUrl('view/1')">view:1</button> |
+          <button ng-click="goUrl('view/2')">view:2</button> |
+          <button ng-click="goUrl('other')">other</button>
+        </nav>
+
+        <hr/>
+
+        <!-- view 영역 -->
+        <div ng-view="viewArea1"></div>
+
+        <hr/>
+        <!-- location & router 표시  -->
+        <pre>$location.path() = {{$location.path()}}</pre>
+        <pre>$route.current.templateUrl = {{$route.current.templateUrl}}</pre>
+        <pre>$route.current.params = {{$route.current.params}}</pre>
+        <pre>$route.current.scope.name = {{$route.current.scope.name}}</pre>
+        <pre>$routeParams = {{$routeParams}}</pre>
+
+    </body>
+	</html>
+]]>
+</script>
+<br/>
+<span class="chapter-title">script.js</span>
+<script id="chapter6-2" type="syntaxhighlighter" class="brush: js">
+<![CDATA[
+// module 등록
+// ngRouter 모듈을 먼저 로드
+var app = angular.module('tutorialApp', ['ngRoute'])
+
+// config 설정
+app.config(function($routeProvider) {
+  // $routeProvider - route 설정을 하는 Provider
+  $routeProvider
+		.when('/', {                    // path 설정
+			controller: 'RootController', // controller 연결
+			template: '<h3>Main Page</h3>',
+			redirectTo: '/'               // redirect 될 path
+		});
+
+	$routeProvider
+		.when('/view/:viewId', {          // path 및 params 설정
+		  template: '<h3>View page</h3><h4>view ID: {{viewParam}}</h4>',
+			controller: 'ViewController', // controller 연결
+		});
+
+	$routeProvider
+		.when('/other', {               // path 설정
+		  templateUrl: 'other.html'     // template html url 설정
+		});
+
+	$routeProvider
+	  .otherwise({
+			redirectTo : '/'
+		});
+});
+
+// RootController 설정
+app.controller('RootController', function($scope, $rootScope, $route, $routeParams, $location) {
+  /*
+  * $scope      : http://blog.naver.com/jjoommnn/130182960996 참조
+  * $rootScope  : $scope의 최상위
+  * $route      : controller와 view(html)에 연결에 사용됨
+  * $routeParams: route parameters
+  * $location   : window.location 을 기준으로한 서비스 객체
+  */
+
+  // route 정보 등록
+	$scope.$route = $route;
+	$scope.$location = $location;
+	$scope.$routeParams = $routeParams;
+
+	// rootScope에 goUrl method 등록
+	$rootScope.goUrl = function(url) {
+	  $location.url(url);
+	}
+});
+
+// ViewController 설정
+app.controller('ViewController', function($scope, $route, $routeParams) {
+  $scope.name  = 'ViewController'
+	$scope.params = $routeParams;
+
+	// viewParam 에 parameter view를 넣어줌
+	$scope.viewParam = $routeParams['viewId'];
+});
+
+]]>
+</script>
+<br/>
+
+<span class="chapter-title">other.html</span>
+<script id="chapter6-3" type="syntaxhighlighter" class="brush: js;  html-script: true">
+<![CDATA[
+	<h3>Other page</h3>
+    <h4>templateUrl로 연결함</h4>
+]]>
+</script>
+<br/>
+
+<a class="chapter-link-plunker" href="http://plnkr.co/edit/Ln99pU2oDjvI7RLJLrVl?p=preview" target="_blank">Plunker</a>

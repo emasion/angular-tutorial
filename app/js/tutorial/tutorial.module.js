@@ -10,18 +10,16 @@ var NavMainDirective = require('./common/nav/main.directive')
 // @ngInject
 function config($routeProvider, $locationProvider) {
 	$routeProvider
-		.when('/', {
+		.when('/tutorial/main', {
 			controller: 'RootController',
 			resolve: RootController.resolve,
 			redirectTo: '/tutorial/main'
-		})
+		});
 
 	$routeProvider
-		.when('/tutorial/', {
-			controller: 'RootController',
-			resolve: RootController.resolve,
-			redirectTo: '/tutorial/main'
-		})
+		.otherwise({
+			redirectTo : '/tutorial/main'
+		});
 }
 
 angular.module('tutorial', [

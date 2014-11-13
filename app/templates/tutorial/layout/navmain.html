@@ -1,4 +1,4 @@
-<button ng-click="$location.url('tutorial/')">HOME</button>
+<button ng-click="goURL('tutorial/')">HOME</button>
 <span>Chapter</span>
 <select ng-model="selectChapterUrl" ng-change="changeChapter()" ng-options="item.url as item.name for item in tableList">
     <option value="">---- chapter select ----</option>

@@ -22,5 +22,9 @@
   {
     "name": "[AngularJS] Chapter 5_2 - Service : Factory, Service, Provider",
     "url": "tutorial/chapter/5_2"
+  },
+  {
+    "name": "[AngularJS] Chapter 6 - ngRoute",
+    "url": "tutorial/chapter/6"
   }
 ]
