@@ -8,7 +8,7 @@ var jshint = require('gulp-jshint')
 
 /* jshint */
 gulp.task('lint', function() {
-	return gulp.src('app/**/*.js')
+	return gulp.src('app/js/**/*.js')
 		.pipe(jshint())
 		.pipe(jshint.reporter('jshint-stylish'))
 		//.pipe(jshint.reporter('default'))

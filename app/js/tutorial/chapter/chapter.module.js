@@ -1,6 +1,7 @@
 'use strict';
 
 /* Chapter module */
+var ChapterService = require('./chapter.svc')
 var ChapterController = require('./chapter.ctrl')
 function config($routeProvider) {
 
@@ -14,5 +15,6 @@ function config($routeProvider) {
 
 angular.module('tutorial.chapter', [])
 .config(config)
+.factory('ChapterService', ChapterService)
 .controller('ChapterController', ChapterController)
 

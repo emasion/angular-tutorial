@@ -13,7 +13,6 @@
 	"strict": true,
 	"trailing": true,
 	"smarttabs": true,
-
 	"asi": true,
 	"camelcase": false,
 	"debug": true,
@@ -24,7 +23,7 @@
 		"angular",
 		"_",
 		"rangy",
-
+		"SyntaxHighlighter",
 		"describe",
 		"beforeEach",
 		"it",
