@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 // @ngInject
 module.exports = function NavMainDirective() {
@@ -6,7 +6,7 @@ module.exports = function NavMainDirective() {
 		restrict: 'E',
 		templateUrl: 'templates/tutorial/layout/navmain.html',
 		controller: function($log, $rootScope, $scope, $location) {
-			$scope.selectChapterUrl = '';
+			$scope.selectChapterUrl = ''
 			$rootScope.$on('$locationChangeStart',
 				function (event, toState, toParams, fromState, fromParams) {
 					//$log.log('Directive location URL : ', $location.url());
@@ -19,14 +19,13 @@ module.exports = function NavMainDirective() {
 					//});
 					if(!_.isUndefined($scope.selectChapterUrl)) {
 						// ^/ 제거
-						$scope.selectChapterUrl = $location.url().substr(1);
-						//console.log($scope.selectChapterUrl);
+						$scope.selectChapterUrl = $location.url().substr(1)
 					}
 				});
 
 			//Nav Chapter select 처리
 			$scope.changeChapter = function() {
-				$rootScope.goURL(this.selectChapterUrl);
+				$rootScope.goURL(this.selectChapterUrl)
 			}
 		}
 	};

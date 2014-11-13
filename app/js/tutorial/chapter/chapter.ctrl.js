@@ -1,10 +1,10 @@
-'use strict'
+'use strict';
 
 // @ngInject
 module.exports = function ChapterController($log, $scope, $q, $routeParams, $timeout) {
-	$log.info('ChapterController');
+	$log.info('ChapterController')
 	$scope.name  = 'ChapterController'
-	$scope.params = $routeParams;
+	$scope.params = $routeParams
 
 	// template load
 	var tempPath = $routeParams['chapter'] + '.html'

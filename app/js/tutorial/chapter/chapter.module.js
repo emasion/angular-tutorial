@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 /* Chapter module */
 var ChapterController = require('./chapter.ctrl')

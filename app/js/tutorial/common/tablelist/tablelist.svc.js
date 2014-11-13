@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 // @ngInject
 module.exports = function TableListService($rootScope, $q, $timeout, $filter, $http) {
@@ -11,7 +11,7 @@ module.exports = function TableListService($rootScope, $q, $timeout, $filter, $h
 	}
 
 	self.getTableList = function() {
-		var d = $q.defer();
+		var d = $q.defer()
 
 		if(self.hasTableList()) {
 			d.resolve(data.tableList)

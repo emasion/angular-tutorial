@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 require('./common/common.module')
 require('./main/main.module')
@@ -10,7 +10,7 @@ var NavMainDirective = require('./common/nav/main.directive')
 // @ngInject
 function config($routeProvider, $locationProvider) {
 	$routeProvider
-		.when('/tutorial/main', {
+		.when('/', {
 			controller: 'RootController',
 			resolve: RootController.resolve,
 			redirectTo: '/tutorial/main'
@@ -19,7 +19,7 @@ function config($routeProvider, $locationProvider) {
 	$routeProvider
 		.otherwise({
 			redirectTo : '/tutorial/main'
-		});
+		})
 }
 
 angular.module('tutorial', [
